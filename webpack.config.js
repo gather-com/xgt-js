@@ -19,7 +19,7 @@ if (env === 'build') {
 
 const clientConfig = {
   mode: mode,
-  entry: __dirname + '/src/xga.js',
+  entry: __dirname + '/src/xgt.js',
   devtool: 'inline-source-map',
   output: {
     path: __dirname + '/lib',
@@ -53,9 +53,9 @@ const serverConfig = {
   target: 'node',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'xga.node.js'
+    filename: 'xgt.node.js'
   },
-  entry: __dirname + '/src/xga.js',
+  entry: __dirname + '/src/xgt.js',
   devtool: 'inline-source-map',
   output: {
     path: __dirname + '/lib',

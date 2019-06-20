@@ -1,23 +1,23 @@
 {
-  "name": "xga",
+  "name": "xgt",
   "version": "1.0.0",
-  "description": "XGA client library",
-  "main": "lib/xga.js",
+  "description": "XGT client library",
+  "main": "lib/xgt.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test && npm run sample",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha --require @babel/register --colors ./test/*.spec.js",
-    "repl": "node -i -e \"$(< ./lib/xga.js)\"",
+    "repl": "node -i -e \"$(< ./lib/xgt.js)\"",
     "sample": "node sample.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gather_com/xga-js.git"
+    "url": "https://github.com/gather_com/xgt-js.git"
   },
   "keywords": [],
   "author": "Roger Jungemann",
   "license": "MIT",
-  "homepage": "https://github.com/gather_com/xga-js",
+  "homepage": "https://github.com/gather_com/xgt-js",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",

@@ -1,4 +1,6 @@
-# Webpack library starter
+# XGT JS Client Library
+
+TODO: Update README.md
 
 Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library)
 

@@ -1,7 +1,7 @@
 /* global describe, it, before */
 
 import chai from 'chai';
-import { Auth } from '../lib/xga.js';
+import { Auth } from '../lib/xgt.js';
 
 chai.expect();
 

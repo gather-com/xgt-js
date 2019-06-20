@@ -1,12 +1,12 @@
-const xga = require('./lib/xga');
+const xgt = require('./lib/xgt');
 
 // const addressPrefix = 'TST';
 const addressPrefix = 'XGT';
 const host = 'http://localhost:8751';
 // const chainId = '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e';
 const chainId = '4e08b752aff5f66e1339cb8c0a8bca14c4ebb238655875db7dade86349091197';
-// const privateKey = xga.PrivateKey.fromWif('5JNHfZYKGaomSFvd4NUdQ9qMcEAC43kujbfjueTHpVapX1Kzq2n');
-const privateKey = xga.PrivateKey.fromWif('5JNHfZYKGaomSFvd4NUdQ9qMcEAC43kujbfjueTHpVapX1Kzq2n');
+// const privateKey = xgt.PrivateKey.fromWif('5JNHfZYKGaomSFvd4NUdQ9qMcEAC43kujbfjueTHpVapX1Kzq2n');
+const privateKey = xgt.PrivateKey.fromWif('5JNHfZYKGaomSFvd4NUdQ9qMcEAC43kujbfjueTHpVapX1Kzq2n');
 const name = 'foo' + Math.floor(Math.random() * Math.pow(16, 6)).toString(16);
 const now = new Date().toISOString().replace(/Z$/, '').replace(/\.\d+$/, '');
 const transaction = {
@@ -59,12 +59,12 @@ const transaction = {
   'ref_block_prefix': 883395518
 };
 
-var rpc = new xga.Rpc(host);
+var rpc = new xgt.Rpc(host);
 rpc.send('call', ['condenser_api', 'get_chain_properties', []])
   .then(function(response) {
     const fee = response.result.account_creation_fee;
     transaction.operations[0][1].fee = fee;
-    xga.Auth
+    xgt.Auth
       .signTransaction(rpc, transaction, [privateKey], addressPrefix, chainId)
       .then(function(signed) {
         return [
