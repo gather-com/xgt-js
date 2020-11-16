@@ -1,15 +1,26 @@
 import axios from 'axios';
 import bs58 from 'bs58';
 import { Buffer } from 'buffer';
-import crypto from 'crypto';
-import secp256k1 from 'secp256k1';
+import createHash from 'create-hash';
+import secp256k1 from 'secp256k1-pure';
+
+function getRandomBytes(n) {
+  if (typeof window !== 'undefined') {
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return Buffer.from(array);
+  } else {
+    const crypto = require('crypto');
+    return crypto.randomBytes(32);
+  }
+}
 
 function sha256(input) {
-  return crypto.createHash('sha256').update(input).digest();
+  return createHash('sha256').update(input).digest();
 }
 
 function ripemd160(input) {
-  return crypto.createHash('ripemd160').update(input).digest();
+  return createHash('ripemd160').update(input).digest();
 }
 
 class PrivateKey {
@@ -118,7 +129,7 @@ class Auth {
   }
 
   static randomWif() {
-    const privateKey = Buffer.concat([Buffer.from('80', 'hex'), crypto.randomBytes(32)]);
+    const privateKey = Buffer.concat([Buffer.from('80', 'hex'), getRandomBytes(32)]);
     let checksum = sha256(sha256(privateKey)).slice(0, 4);
     return bs58.encode(Buffer.concat([privateKey, checksum]));
   }

@@ -9,16 +9,17 @@ let libraryName = pkg.name;
 
 let outputFile, mode;
 
-if (env === 'build') {
-  mode = 'production';
-  outputFile = libraryName + '.min.js';
-} else {
+// if (env === 'build') {
+//   mode = 'production';
+//   outputFile = libraryName + '.min.js';
+// } else {
   mode = 'development';
   outputFile = libraryName + '.js';
-}
+// }
 
 const clientConfig = {
   mode: mode,
+  target: 'web',
   entry: __dirname + '/src/xgt.js',
   devtool: 'inline-source-map',
   output: {
@@ -35,12 +36,7 @@ const clientConfig = {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
-      },
-      // {
-      //   test: /(\.jsx|\.js)$/,
-      //   loader: 'eslint-loader',
-      //   exclude: /node_modules/
-      // }
+      }
     ]
   },
   resolve: {
@@ -71,12 +67,7 @@ const serverConfig = {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
-      },
-      // {
-      //   test: /(\.jsx|\.js)$/,
-      //   loader: 'eslint-loader',
-      //   exclude: /node_modules/
-      // }
+      }
     ]
   },
   resolve: {
