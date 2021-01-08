@@ -89,6 +89,15 @@ class PrivateKey {
 }
 
 class Auth {
+  static async generateWalletName(...publicKeys) {
+    const hashed = sha256(publicKeys.join(''));
+    const buffered = Buffer.from(hashed, 'hex');
+    const base58 = bs58.encode(buffered);
+    const addressPrefix = 'XGT';
+    const walletName = `${addressPrefix}${base58.substring(0, 40)}`;
+    return walletName;
+  }
+
   static async transactionDigest(rpc, transaction, keys, addressPrefix, chainId) {
     const body = await rpc.send('network_broadcast_api.get_transaction_hex', [transaction]);
     const transactionHex = body.substring(0, body.length - 2);
